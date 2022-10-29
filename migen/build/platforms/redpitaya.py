@@ -102,6 +102,10 @@ _io += [
 
 
 class Platform(XilinxPlatform):
-    def __init__(self, variant="xc7z010-clg400-1"):
+    def __init__(self, **kwargs):
+        if 'variant' in kwargs:
+            variant = kwargs.get('variant')
+        else:
+            variant = 'xc7z010-clg400-1'
         XilinxPlatform.__init__(self, variant, _io,
             toolchain="vivado")
